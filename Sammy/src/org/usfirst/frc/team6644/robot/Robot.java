@@ -1,5 +1,6 @@
 package org.usfirst.frc.team6644.robot;
 
+import org.opencv.core.Mat;
 import org.usfirst.frc.team6644.robot.commandGroups.AvoidAutonomous;
 import org.usfirst.frc.team6644.robot.commands.AccelerometerTest;
 import org.usfirst.frc.team6644.robot.commands.DisplayVision;
@@ -43,10 +44,12 @@ public class Robot extends IterativeRobot {
 	public static ForceSensor force;
 	public static Arduino ard;
 	public static IRArray irArray;
+	public static DisplayVision displayvisionthing;
+	public static int i;
 	// test
 	public static Joystick joystick = new Joystick(RobotPorts.JOYSTICK.get());
 	// end test
-
+	public static Mat sworce = new Mat();
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
@@ -68,6 +71,7 @@ public class Robot extends IterativeRobot {
 		ard = new Arduino();
 		irArray = new IRArray();
 		new DisplayVision();
+		i=0;
 		chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
@@ -131,6 +135,10 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		i++;
+		Scheduler.getInstance().run();
+		displayvisionthing.execute();
+
 	}
 
 	@Override
