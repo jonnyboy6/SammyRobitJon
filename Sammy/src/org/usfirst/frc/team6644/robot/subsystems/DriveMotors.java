@@ -141,7 +141,7 @@ public class DriveMotors extends Subsystem {
 
 	/*
 	 * 
-	 * methods for driving in Teleop and Autonomous
+	 * methods for driving in Teleop
 	 */
 	public void setIsRunning(boolean isRunning) {
 		this.isRunning = isRunning;
@@ -233,7 +233,6 @@ public class DriveMotors extends Subsystem {
 		controller.setRumble(RumbleType.kLeftRumble, left);
 		controller.setRumble(RumbleType.kRightRumble, right);
 	}
-	
 	public void toggleMotorDisableState() {
 		disableMotors = !disableMotors;
 	}
@@ -287,17 +286,6 @@ public class DriveMotors extends Subsystem {
 		driveOutputs[1] = right;
 		return driveOutputs;
 	}
-
-	public void moveStraight(double speed, double time) {
-		// Boolean: go staright
-		// pid: time
-	}
-
-	public void setHeading(double heading) {
-		// double: heading
-		//
-	}
-
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
